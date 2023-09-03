@@ -32,10 +32,11 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 router.post('/', async (req, res) => {
   try {
     const categoryData = await Location.create(req.body);
-    res.status(200).json(CategoryData);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(400).json(err);
   }
