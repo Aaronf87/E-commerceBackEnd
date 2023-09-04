@@ -29,7 +29,7 @@ Product.init(
       }
     },
    stock:{
-    type: DataTypes.INTERGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 10,
     validate: {
@@ -41,10 +41,7 @@ Product.init(
       model: "category",
       key: "id"
     }
-
     }
-
-
    },
   {
     sequelize,
