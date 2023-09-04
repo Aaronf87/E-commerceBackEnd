@@ -15,11 +15,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-
+// find a single category by its `id`
 router.get('/:id', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id, {
-      // JOIN with travellers, using the Trip through table
       
     });
 
