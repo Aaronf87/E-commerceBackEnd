@@ -4,3 +4,24 @@ DROP DATABASE IF EXISTS ecommerce_db;
 -- CREATE DATABASE
 CREATE DATABASE ecommerce_db;
 
+-- USE DATABASE
+USE ecommerce_db;
+
+-- DROP TABLES
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS product_tags;
+
+-- CREATE TABLES
+CREATE TABLE products (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  product_name VARCHAR(50) NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  stock INTEGER DEFAULT 10,
+  category_id INTEGER,
+  PRIMARY KEY (id),
+  FOREIGN KEY (category_id) REFERENCES categories (id)
+);
+    
+
