@@ -14,8 +14,9 @@ try{
   res.status(500).json(err);
 }
 });
-// get one product
 
+
+// GET ONE PRODUCT BY ID USING ROUTE API/PRODUCTS/:ID
 router.get('/:id', async(req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
