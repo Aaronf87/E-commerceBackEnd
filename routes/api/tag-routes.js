@@ -37,8 +37,8 @@ router.get('/:id', async(req, res) => {
 // CREATING A POST ROUTE FOR TAG
 router.post('/', async (req, res) => {
   try {
-    const categoryData = await ProductTag.create(req.body);
-    res.status(200).json(ProductTag);
+    const TagData = await ProductTag.create(req.body);
+    res.status(200).json(TagData);
   } catch (err) {
     res.status(400).json(err);
   }
