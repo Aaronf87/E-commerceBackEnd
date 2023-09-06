@@ -6,7 +6,7 @@ const routes = require('./routes');
 // import sequelize connection
 const sequelize = require('./config/connection');
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3004;
 
 // middleware to parse JSON and string data encoded in the URL
 app.use(express.json());
