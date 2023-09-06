@@ -3,6 +3,10 @@
 
 
 
+https://github.com/Aaronf87/E-commerceBackEnd/assets/97806359/33ca96c0-4688-4b67-bcef-2161c54f816b
+
+
+
 A walkthrough video shows the POST, PUT, and DELETE routes for products and tags being tested in Insomnia.
 
 
