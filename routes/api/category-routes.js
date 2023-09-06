@@ -1,12 +1,13 @@
+// USE EXPRESS ROUTER
 const router = require('express').Router();
+// IMPORT MODELS
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
+// GET ALL CATEGORIES INCLUDING ITS ASSOCIATED PRODUCT DATA
 router.get('/', async (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
   try {
-    const CategoryData = await Category.findAll({
+    const CategoryData = await Category.findAll(
+      {
       include: [Product],
     });
     res.status(200).json(CategoryData);
@@ -14,8 +15,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// find a single category by its `id` DONE!
+// FIND ONE CATEGORY BY ITS ID USING ROUTE API/CATEGORIES/:ID
 router.get('/:id', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id, {
@@ -32,7 +32,7 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// CREATING A POST ROUTE FOR CATEGORY
 router.post('/', async (req, res) => {
   try {
     const categoryData = await Category.create(req.body);
@@ -42,25 +42,27 @@ router.post('/', async (req, res) => {
   }
 });
 
+// UPDATE/PUT A CATEGORY BY ITS ID VALUE
 router.put('/:id', async (req, res) => {
-  // update a category by its `id` value
 try{
   const categoryData = await Category.update (
     req.body,{
       where:{
         id: req.params.id,
+      },
+    });
+      if (!categoryData[0]) {
+        res.status(404).json({ message: 'No location found with this id!' });
+        return; 
       }
-    }
-    
-    )
-    res.json(categoryData)
+    res.status(200).json(categoryData);
 }
 catch (err) {
-  res.status(400).json(err);
+  res.status(500).json(err);
 }
 
 });
-
+// DELETE ROUTE FOR CATEGORY
 router.delete('/:id', async (req, res) => {
   try {
     const categoriesData = await Category.destroy({
@@ -69,7 +71,7 @@ router.delete('/:id', async (req, res) => {
       }
     });
 
-    if (!locationData) {
+    if (!categoriesData) {
       res.status(404).json({ message: 'No location found with this id!' });
       return;
     }

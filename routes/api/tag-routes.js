@@ -5,7 +5,6 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 router.get('/', async (req, res) => {
   // find all tags
-  // be sure to include its associated Product data
   try {
     const TagData = await Tag.findAll({
       include: [Product],
@@ -35,15 +34,20 @@ router.get('/:id', async(req, res) => {
     res.status(500).json(err);
   }
 });
-
-router.post('/', (req, res) => {
-  // create a new tag
+// CREATING A POST ROUTE FOR TAG
+router.post('/', async (req, res) => {
+  try {
+    const categoryData = await ProductTag.create(req.body);
+    res.status(200).json(ProductTag);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
 });
-
+// CREATING A DELETE ROUTE FOR TAG
 router.delete('/:id',async (req, res) => {
   // delete on tag by its `id` value
   try {
